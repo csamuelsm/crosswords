@@ -1,0 +1,478 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Crosswords</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        const api = Cookies.withAttributes({expires:365});
+    </script>
+
+    <script src="assets/crosswords_base.js"></script>
+    <script src="assets/keyboard.js"></script>
+    <script src="assets/typed_keyboard.js"></script>
+    <script src="assets/main.js"></script>
+    <script src="assets/dicas.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+
+    <div class="container main-cont header-cont text-center d-flex justify-content-center align-items-center">
+
+        <div class="header row col-md-8 col-12 d-flex align-items-center">
+            <div class="header-left col-5 d-flex flex-row align-content-between align-items-center">
+                <!--<div class="col-2 text-left">
+                    <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                </div>-->
+                <div class="col-12">
+                    <button type="button" id="quit_button" data-bs-toggle="modal" data-bs-target="#quit" class="senha-button shadow-sm">QUIT</button>
+                </div>
+            </div>
+
+            <div class="logo col-2 text-center">
+                <img class="senha-logo" src="assets/logo.png"/>
+            </div>
+
+            <div class="header-right col-5 text-right d-flex flex-row align-content-between align-items-center">
+                <div class="col-6 text-right">
+                    <!--<i class="fa-sharp fa-solid fa-circle-question onboarding-show"></i>-->
+                    <img src="assets/General-Icon-HowToPlay.png" alt="how-to-play" class="onboarding-show"/>
+                </div>
+                <div class="col-6 text-right">
+                    <!--<i class="fa-sharp fa-solid fa-gear configuracoes-show"></i>-->
+                    <img src="assets/General-Icon-Settings.png" alt="settings" class="configuracoes-show"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container text-center ep_banner_div hide align-items-center justify-content-center">
+        <a href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" src="assets/banners/728 x 90 - Generic Ad - EN.png"/></a>
+    </div>
+
+    <div class="container game-cont text-center d-flex justify-content-center align-items-center">
+        <div class="board row col-md-8 col-12 d-flex align-items-center justify-content-center">
+            <!--<div class="row col-12 d-flex align-items-center justify-content-center current" id="line1"></div>-->
+        </div>
+    </div>
+
+    <div class="container text-center ep_banner_div hide align-items-center justify-content-center">
+        <a href="https://jogoswebep.onelink.me/pKzT/password "><button class='play_more_button shadow mb-3'><h2>JOGUE MAIS</h2></button></a>
+    </div>
+
+    <div class="container keyboard-cont text-center d-flex justify-content-center align-items-center">
+        <div class="col-md-6 dica col-12 shadow-sm text-center align-middle mb-3 p-3 dica-div align-items-center justify-content-center">
+
+        </div>
+        <div class="keyboard row col-md-8 col-12 d-flex align-items-center justify-content-center">
+            <div class="col-12 d-flex align-items-center justify-content-center" id="keyboard_line1"></div>
+            <div class="col-12 d-flex align-items-center justify-content-center" id="keyboard_line2"></div>
+            <div class="col-12 d-flex align-items-center justify-content-center" id="keyboard_line3"></div>
+            <!--<div class="col-12 d-flex align-items-center justify-content-center" id="keyboard_line3">
+                <button class='keyboard-button special-button' value='ENTER' id='ENTER'><p>SEND</p></button>
+            </div>-->
+        </div>
+    </div>
+
+    <!--<div class="container text-center d-flex justify-content-center align-items-center">
+        <div class="ads row col-md-8 col-12 d-flex align-items-center justify-content-center">
+            <h3>ADS AREA</h3>
+        </div>
+    </div>-->
+
+    <!--MODALS-->
+    <div class="modal" id="quit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6><strong>DESISTIR?</strong></h6>
+                <p>Tem certeza que deseja desistir? Você está tão próximo!</p>
+                <div class="col-12 row">
+                    <div class="col-6 text-center">
+                        <button class="yes-button desistir-button" data-bs-target="#finish" data-bs-toggle="modal">SIM</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="no-button" data-bs-dismiss="modal">NÃO</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!--ONBOARDING-->
+    <div class="modal" id="onboarding-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 row align-items-center justify-content-center">
+                <h6><strong>SENHA</strong></h6>
+                <p class="onboarding-text">Descubra a palavra secreta no Senha!</p>
+                <img src="assets/logo.png" style="height: 150px;width:auto;" alt="logo"/>
+                <div class="col-12 row align-items-center justify-content-center">
+                    <div class="row align-items-center mt-4 col-10">
+                        <button class="yes-button" data-bs-target="#onboarding-2" data-bs-toggle="modal">HOW TO PLAY</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="onboarding-2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 row align-items-center justify-content-center">
+                <h6><strong>SENHA</strong></h6>
+                <p class="onboarding-text">Você poderá enviar até 6 palpites para descobrir a palavra do dia.</p>
+
+                <div class="column text-center justify-content-center align-items-center">
+                    <div class="col-12 text-center">
+                        <p class="mb-0"><strong class="text-center secret_word">PALAVRA SECRETA</strong></p>
+                    </div>
+                    <div class="row col-12 d-flex align-items-center justify-content-center mt-0">
+
+                        <div class="tile correto" id="tm21"><p>S</p></div>
+                        <div class="tile correto" id="tm22"><p>E</p></div>
+                        <div class="tile correto" id="tm23"><p>N</p></div>
+                        <div class="tile correto" id="tm24"><p>H</p></div>
+                        <div class="tile correto" id="tm25"><p>A</p></div>
+                    </div>
+                </div>
+
+                <div class="col-12 row align-items-center justify-content-center">
+                    <div class="row align-items-center mt-4 col-10">
+                        <button class="yes-button" data-bs-target="#onboarding-3" data-bs-toggle="modal">NEXT 1/5</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="onboarding-3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 row align-items-center justify-content-center">
+                <h6><strong>SENHA</strong></h6>
+                <p class="onboarding-text">Você poderá enviar um palpite digitando uma palavra e clicando no botao de enviar.</p>
+
+                <div class="row col-12 d-flex align-items-center justify-content-center">
+                    <div class="tile"><p id="tm31">C</p></div>
+                    <div class="tile"><p id="tm32">E</p></div>
+                    <div class="tile"><p id="tm33">R</p></div>
+                    <div class="tile"><p id="tm34">T</p></div>
+                    <div class="tile selected"><p id="tm35">O</p></div>
+                </div>
+
+                <div class="col-12 mt-3 d-flex align-items-center justify-content-center" id="keyboard_line3">
+                    <button class='keyboard-button special-button' id='ENTER'><p>SEND</p></button>
+                </div>
+
+                <div class="col-12 row align-items-center justify-content-center">
+                    <div class="row align-items-center mt-4 col-10">
+                        <button class="yes-button" data-bs-target="#onboarding-4" data-bs-toggle="modal">NEXT 2/5</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="onboarding-4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 row align-items-center justify-content-center">
+                <h6><strong>SENHA</strong></h6>
+                <p class="onboarding-text">Ao enviar um palpite, você recebe dicas da palavra secreta. A cor verde indica que a letra está correta.</p>
+
+                <div class="row col-12 d-flex align-items-center justify-content-center">
+                    <div class="tile errado"><p id="tm41">C</p></div>
+                    <div class="tile correto"><p id="tm42">E</p></div>
+                    <div class="tile errado"><p id="tm43">R</p></div>
+                    <div class="tile errado"><p id="tm44">T</p></div>
+                    <div class="tile errado"><p id="tm45">O</p></div>
+                </div>
+
+                <div class="col-12 row align-items-center justify-content-center">
+                    <div class="row align-items-center mt-4 col-10">
+                        <button class="yes-button" data-bs-target="#onboarding-5" data-bs-toggle="modal">NEXT 3/5</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="onboarding-5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 row align-items-center justify-content-center">
+                <h6><strong>SENHA</strong></h6>
+                <p class="onboarding-text">A cor amarela indica que a letra existe na palavra, mas está em posição errada. As letras cinzas não existem na palavra secreta.</p>
+
+                <div class="row col-12 d-flex align-items-center justify-content-center">
+                    <div class="tile errado"><p  id="tm51">P</p></div>
+                    <div class="tile correto"><p  id="tm52">E</p></div>
+                    <div class="tile correto"><p id="tm53">N</p></div>
+                    <div class="tile existente"><p id="tm54">A</p></div>
+                    <div class="tile existente"><p id="tm55">S</p></div>
+                </div>
+
+                <div class="col-12 row align-items-center justify-content-center">
+                    <div class="row align-items-center mt-4 col-10">
+                        <button class="yes-button" data-bs-target="#onboarding-6" data-bs-toggle="modal">NEXT 4/5</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="onboarding-6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 row align-items-center justify-content-center">
+                <h6><strong>SENHA</strong></h6>
+                <p class="onboarding-text">Use as dicas para dar palpites melhores, que te ajudarão a chegar até a palavra secreta.</p>
+
+                <div class="row col-12 d-flex align-items-center justify-content-center">
+                    <div class="tile errado"><p id="tm41">C</p></div>
+                    <div class="tile correto"><p id="tm42">E</p></div>
+                    <div class="tile errado"><p id="tm43">R</p></div>
+                    <div class="tile errado"><p id="tm44">T</p></div>
+                    <div class="tile errado"><p id="tm45">O</p></div>
+                </div>
+                <div class="row col-12 d-flex align-items-center justify-content-center">
+                    <div class="tile errado"><p id="tm51">P</p></div>
+                    <div class="tile correto"><p id="tm52">E</p></div>
+                    <div class="tile correto"><p id="tm53">N</p></div>
+                    <div class="tile existente"><p id="tm54">A</p></div>
+                    <div class="tile existente"><p id="tm55">S</p></div>
+                </div>
+                <div class="row col-12 d-flex align-items-center justify-content-center">
+                    <div class="tile correto"><p id="tm21">S</p></div>
+                    <div class="tile correto"><p id="tm22">E</p></div>
+                    <div class="tile correto"><p id="tm23">N</p></div>
+                    <div class="tile correto"><p id="tm24">H</p></div>
+                    <div class="tile correto"><p id="tm25">A</p></div>
+                </div>
+
+                <div class="col-12 row align-items-center justify-content-center">
+                    <div class="row align-items-center mt-4 col-10">
+                        <button class="yes-button" data-bs-dismiss="modal">LET'S DO IT!</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!--CONFIGURAÇÕES-->
+    <div class="modal" id="configuracoes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 row align-items-center justify-content-center">
+                <h6><strong>CONFIGURAÇÕES</strong></h6>
+                <p>Selecione a língua em que você deseja jogar: </p>
+                <select name="language-selector" class="language-selector">
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                    <option value="de">Deutsch</option>
+                </select>
+
+                <div class="col-12 row align-items-center justify-content-center">
+                    <div class="row align-items-center mt-4 col-10">
+                        <button class="yes-button">SALVAR</button>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="finish" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+            <div class="modal-header">
+                <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-5 text-center row align-items-center justify-content-center">
+
+                <!--<h4 class="finished_text">Quer jogar mais? Baixe o app!</h4>-->
+                <a href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" class="mb-3" src="assets/banners/728 x 90 - Generic Ad - EN.png"/></a>
+
+                <h6 class="mb-0"><strong class="finished_title">Jogo Finalizado</strong></h6>
+                <h3 class="mt-0"><strong class="finished_text">Parabéns!</strong></h3>
+                <div class="countdown-div">
+                    <p class="countdown_text">Próxima palavra:</p>
+                    <h1 class="countdown"></h1>
+                </div>
+
+                <hr/>
+
+                    <div class="accordion text-center mb-3" id="resposta">
+                        <div class="accordion-item text-center">
+                            <h3 class="accordion-header text-center" id="headingOne">
+                            <button class="accordion-button d-block text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <strong class="text_reveal">REVELAR RESPOSTA</strong>
+                            </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body text-center">
+                                <span class="answer_text">A resposta é: </span><strong></strong>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <hr/>
+
+                <div class="container stats row align-items-center justify-content-center">
+                    <div class="col-12 row stats-fill mb-3">
+                        <div class="col-6">
+                            <p class="stats_streak">Sequência de vitórias</p>
+                            <h1 class="streak">0</h1>
+                        </div>
+                        <div class="col-6">
+                            <p class="stats_best">Melhor sequência</p>
+                            <h1 class="best_streak">0</h1>
+                        </div>
+                    </div>
+
+                    <div class="col-12 row">
+                        <div class="col-6">
+                            <p class="stats_tries">Tentativas</p>
+                            <h1 class="tries">0</h1>
+                        </div>
+                        <div class="col-6">
+                            <p class="stats_challenges">Desafios jogados</p>
+                            <h1 class="times_played">0</h1>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-12 row align-items-center justify-content-center">
+                    <div class="row align-items-center mt-4 col-10">
+                        <a class="twitter-share-link" href="https://twitter.com/intent/tweet?text=I%20played%20Password!%0A%0Ahttps://csamuelsm.github.io/senha">
+                            <button class="yes-button stats_share">COMPARTILHAR</button>
+                        </a>
+                    </div>
+                </div>
+                <!--<button type="button" class="btn btn-primary">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>-->
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--TOASTS-->
+
+        <div class="toast align-items-center position-absolute top-0 start-50 translate-middle-x mt-5" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2500" id="invalida">
+            <div class="d-flex">
+                <div class="toast-body">
+                    A palavra que você digitou é inválida
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div class="toast align-items-center position-absolute top-0 start-50 translate-middle-x mt-5" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2500" id="unfilled">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Você precisa digitar todas as letras
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
