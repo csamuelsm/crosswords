@@ -2,6 +2,18 @@
     script para pegar as dicas
 */
 
+function update(x, y, dir) {
+    select_pos(x, y, dir);
+
+    curr_x = x;
+    curr_y = y;
+    //console.log(x, y);
+    if (dir == 0) dica = grid[`${x},${y}`]['dica-horizontal'];
+    else dica = grid[`${x},${y}`]['dica-vertical'];
+
+    $('.dica').html(dica);
+}
+
 $(document).ready(function(){
     $('.board').on('click', '.tile', function(){
         //console.log('tile click');
@@ -13,14 +25,7 @@ $(document).ready(function(){
             else dir = 0;
         }
 
-        select_pos(x, y, dir);
+        update(x, y, dir);
 
-        curr_x = x;
-        curr_y = y;
-        //console.log(x, y);
-        if (dir == 0) dica = grid[`${x},${y}`]['dica-horizontal'];
-        else dica = grid[`${x},${y}`]['dica-vertical'];
-
-        $('.dica').html(dica);
     })
 })

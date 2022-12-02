@@ -2,19 +2,6 @@ let keyboard = [['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
                 ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
                 ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE']]
 
-function next_tile() {
-    if (dir == 0) {
-        if($(`.tile[x=${parseInt(curr_x) + 1}][y=${parseInt(curr_y)}][value!="#"]`).length > 0) {
-            select_pos(parseInt(curr_x)+1, curr_y, dir);
-            curr_x = parseInt(curr_x)+1;
-        }
-    } else {
-        if($(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y) + 1}][value!="#"]`).length > 0) {
-            select_pos(parseInt(curr_x), parseInt(curr_y)+1, dir);
-            curr_y = parseInt(curr_y)+1;
-        }
-    }
-}
 
 function keyboard_entry(value) {
     //checking if modals are open
@@ -37,12 +24,15 @@ function keyboard_entry(value) {
 
     if (value == 'BACKSPACE') {
         //TODO: BACKSPACE PRESS
+        backspace();
     } else if (value == 'ENTER') {
         //TODO: ENTER PRESS
     } else {
         if (!modal_open) {
             //TODO: LETTER KEY PRESS
             $(`.tile[x=${curr_x}][y=${curr_y}]`).html(`<p>${value}</p>`);
+            $(`.tile[x=${curr_x}][y=${curr_y}]`).attr('fill', 1);
+            $(`.tile[x=${curr_x}][y=${curr_y}]`).attr('answer', value);
             next_tile();
         }
     }

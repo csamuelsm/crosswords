@@ -14,6 +14,10 @@ $(document).ready(function() {
             previous_tile();
         } else if (event.keyCode == 39) {
             next_tile();
+        } else if (event.keyCode == 38) {
+            up_tile();
+        } else if (event.keyCode == 40) {
+            down_tile();
         }
     })
 })

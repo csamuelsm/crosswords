@@ -161,6 +161,9 @@ i {
 .start_tile {
     background-color: #FFC700;
 }
+.correto {
+    color: blue;
+}
 
 .shake-effect {
     background-color: #FF6B00;
