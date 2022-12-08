@@ -1,0 +1,27 @@
+<svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1H10.4V10.4H1V1Z" fill="#FFC700" stroke="black" stroke-width="2"/>
+<path d="M10.4004 1H19.8004V10.4H10.4004V1Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M19.7998 1H29.1998V10.4H19.7998V1Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M29.2002 1H38.6002V10.4H29.2002V1Z" fill="black" stroke="black" stroke-width="2"/>
+<path d="M38.5996 1H47.9996V10.4H38.5996V1Z" fill="black" stroke="black" stroke-width="2"/>
+<path d="M1 10.4001H10.4V19.8001H1V10.4001Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M10.4004 10.4001H19.8004V19.8001H10.4004V10.4001Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M19.7998 10.4001H29.1998V19.8001H19.7998V10.4001Z" fill="black" stroke="black" stroke-width="2"/>
+<path d="M29.2002 10.4001H38.6002V19.8001H29.2002V10.4001Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M38.5996 10.4001H47.9996V19.8001H38.5996V10.4001Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M1 19.8002H10.4V29.2002H1V19.8002Z" fill="black" stroke="black" stroke-width="2"/>
+<path d="M1 29.1998H10.4V38.5998H1V29.1998Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M1 38.5999H10.4V47.9999H1V38.5999Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M10.4004 29.1998H19.8004V38.5998H10.4004V29.1998Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M10.4004 19.8002H19.8004V29.2002H10.4004V19.8002Z" fill="black" stroke="black" stroke-width="2"/>
+<path d="M19.7998 29.1998H29.1998V38.5998H19.7998V29.1998Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M10.4004 38.5999H19.8004V47.9999H10.4004V38.5999Z" fill="black" stroke="black" stroke-width="2"/>
+<path d="M29.2002 29.1998H38.6002V38.5998H29.2002V29.1998Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M19.7998 19.8002H29.1998V29.2002H19.7998V19.8002Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M38.5996 29.1998H47.9996V38.5998H38.5996V29.1998Z" fill="black" stroke="black" stroke-width="2"/>
+<path d="M19.7998 38.5999H29.1998V47.9999H19.7998V38.5999Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M29.2002 19.8002H38.6002V29.2002H29.2002V19.8002Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M29.2002 38.5999H38.6002V47.9999H29.2002V38.5999Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M38.5996 19.8002H47.9996V29.2002H38.5996V19.8002Z" fill="white" stroke="black" stroke-width="2"/>
+<path d="M38.5996 38.5999H47.9996V47.9999H38.5996V38.5999Z" fill="white" stroke="black" stroke-width="2"/>
+</svg>

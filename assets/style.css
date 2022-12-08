@@ -1,6 +1,9 @@
 html, body {
     width: 100%;
     height: 100%;
+    background-color: #F3F4F4;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -53,7 +56,7 @@ i {
 }
 
 .senha-logo {
-    width: 60%;
+    width: 50%;
 }
 
 @media (max-width: 1024px)
@@ -106,7 +109,8 @@ i {
 }
 
 .keyboard {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
+    background-color: #EAE8E1;
 }
 
 .keyboard-cont {
@@ -120,7 +124,7 @@ i {
 
 .keyboard-button {
     border: 1px solid rgba(0,0,0,0.2);
-    margin: 2px;
+    margin: 2.5px;
     min-width: 30px;
     padding: 6px 7px 6px 7px;
     border-radius: 3px;

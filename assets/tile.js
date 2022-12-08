@@ -1,11 +1,23 @@
 function next_empty_tile() {
-    let next_tile = $(`.tile[value != "#"][fill != 1]:first`);
+    let next_tile = $(`.tile[value != "#"][fill != 1][verified != 1]:first`);
     if (next_tile.length > 0) {
         let x = next_tile.attr("x");
         let y = next_tile.attr("y");
         curr_x = x;
         curr_y = y;
         update(parseInt(x), parseInt(y), dir);
+    }
+}
+
+function verify_grid() {
+    for (let i = 0; i < biggest_x; i++) {
+        let tiles = $(`.tile[x = ${i}][value != "#"]`);
+        verify_word(tiles);
+    }
+
+    for (let i = 0; i < biggest_y; i++) {
+        let tiles = $(`.tile[y = ${i}][value != "#"]`);
+        verify_word(tiles);
     }
 }
 
@@ -19,6 +31,7 @@ function verify_word(tiles) {
     if (valid) {
         tiles.each(function(index, tile) {
             $(this).addClass('correto');
+            $(this).attr('verified', 1);
         })
     } else {
         console.log('resposta errada');
@@ -33,8 +46,8 @@ function next_tile() {
             //curr_x = parseInt(curr_x)+1;
         } else {
             // TODO: VERIFICAR AQUI SE A PALAVRA DA LINHA ATUAL ESTÁ CORRETA
-            let tiles = $(`.tile[y = ${curr_y}][value != "#"]`);
-            verify_word(tiles);
+            //let tiles = $(`.tile[y = ${curr_y}][value != "#"]`);
+            //verify_word(tiles);
             next_empty_tile();
         }
     } else {
@@ -43,11 +56,12 @@ function next_tile() {
             //curr_y = parseInt(curr_y)+1;
         } else {
             // TODO: VERIFICAR AQUI SE A PALAVRA DA COLUNA ATUAL ESTÁ CORRETA
-            let tiles = $(`.tile[x = ${curr_x}][value != "#"]`);
-            verify_word(tiles);
+            //let tiles = $(`.tile[x = ${curr_x}][value != "#"]`);
+            //verify_word(tiles);
             next_empty_tile();
         }
     }
+    verify_grid();
 }
 
 function up_tile() {
@@ -65,6 +79,28 @@ function down_tile() {
 
     if($(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)+1}][value!="#"]`).length > 0) {
         update(parseInt(curr_x), parseInt(curr_y)+1, dir);
+        //curr_x = parseInt(curr_x)+1;
+    } else {
+        next_empty_tile();
+    }
+
+}
+
+function right_tile() {
+
+    if($(`.tile[x=${parseInt(curr_x)+1}][y=${parseInt(curr_y)}][value!="#"]`).length > 0) {
+        update(parseInt(curr_x)+1, parseInt(curr_y), dir);
+        //curr_x = parseInt(curr_x)+1;
+    } else {
+        next_empty_tile();
+    }
+
+}
+
+function left_tile() {
+
+    if($(`.tile[x=${parseInt(curr_x)-1}][y=${parseInt(curr_y)}][value!="#"]`).length > 0) {
+        update(parseInt(curr_x)-1, parseInt(curr_y), dir);
         //curr_x = parseInt(curr_x)+1;
     } else {
         next_empty_tile();
@@ -91,10 +127,15 @@ function backspace() {
         let target = $(`.tile[x=${parseInt(curr_x) - 1}][y=${parseInt(curr_y)}][value!="#"]`);
         if(target.length > 0) {
             if ($(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)}]`).html() == "") {
-                update(parseInt(curr_x)-1, curr_y, dir);
-                target.html("");
+                if (target.attr('verified') != 1) {
+                    update(parseInt(curr_x)-1, curr_y, dir);
+                    target.html("");
+                }
             } else {
-                $(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)}]`).html("");
+                let curr = $(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)}]`);
+                if (curr.attr('verified') != 1) {
+                    curr.html("");
+                }
             }
             //curr_x = parseInt(curr_x)-1;
         }
@@ -102,10 +143,15 @@ function backspace() {
         let target = $(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)-1}][value!="#"]`);
         if(target.length > 0) {
             if ($(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)}]`).html() == "") {
-                update(parseInt(curr_x)-1, parseInt(curr_y)-1, dir);
-                target.html("");
+                if (target.attr('verified') != 1) {
+                    update(parseInt(curr_x), parseInt(curr_y)-1, dir);
+                    target.html("");
+                }
             } else {
-                $(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)}]`).html("");
+                let curr = $(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)}]`);
+                if (curr.attr('verified') != 1) {
+                    curr.html("");
+                }
             }
             //curr_x = parseInt(curr_x)-1;
         }

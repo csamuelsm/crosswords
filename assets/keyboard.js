@@ -1,6 +1,7 @@
 let keyboard = [['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
                 ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-                ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE']]
+                ['DIR', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE'],
+                ['AUTO CHECK', 'REVEAL 5 LETTERS', 'REVEAL']]
 
 
 function keyboard_entry(value) {
@@ -23,17 +24,42 @@ function keyboard_entry(value) {
         }
 
     if (value == 'BACKSPACE') {
-        //TODO: BACKSPACE PRESS
         backspace();
-    } else if (value == 'ENTER') {
-        //TODO: ENTER PRESS
+    } else if (value == 'DIR') {
+        if (dir == 0) dir = 1;
+        else dir = 0;
+        update(curr_x, curr_y, dir);
+    } else if (value == 'REVEAL 5 LETTERS') {
+        let items = shuffle($(`.tile[value != "#"][filled != 1][answer = none]`)).slice(0, 5);
+        for (let i = 0; i < items.length; i++) {
+            let object = $(items[i]);
+            let answer = object.attr("value");
+            object.html(`<p>${answer.toUpperCase()}</p>`);
+            object.attr("answer", answer.toUpperCase());
+            object.attr("filled", 1);
+            object.attr("verified", 1);
+            object.addClass('correto');
+        }
+        //next_tile();
+    } else if (value == 'REVEAL') {
+        let items = $(`.tile[value != "#"][filled != 1][answer = none]`);
+        items.each(function(index, element) {
+            let object = $(this);
+            let answer = object.attr("value");
+            object.html(`<p>${answer.toUpperCase()}</p>`);
+            object.attr("answer", answer.toUpperCase());
+            object.attr("filled", 1);
+            object.attr("verified", 1);
+            object.addClass('correto');
+        })
     } else {
         if (!modal_open) {
-            //TODO: LETTER KEY PRESS
-            $(`.tile[x=${curr_x}][y=${curr_y}]`).html(`<p>${value}</p>`);
-            $(`.tile[x=${curr_x}][y=${curr_y}]`).attr('fill', 1);
-            $(`.tile[x=${curr_x}][y=${curr_y}]`).attr('answer', value);
-            next_tile();
+            if ($(`.tile[x=${curr_x}][y=${curr_y}]`).attr('verified') != 1) {
+                $(`.tile[x=${curr_x}][y=${curr_y}]`).html(`<p>${value}</p>`);
+                $(`.tile[x=${curr_x}][y=${curr_y}]`).attr('fill', 1);
+                $(`.tile[x=${curr_x}][y=${curr_y}]`).attr('answer', value);
+                next_tile();
+            }
         }
     }
 
@@ -46,14 +72,20 @@ $(document).ready(function(){
 
     for (let i = 0; i < keyboard.length; i++) {
         for (let j = 0; j < keyboard[i].length; j++){
-            if (keyboard[i][j] == 'ENTER' || keyboard[i][j] == 'BACKSPACE') {
+            if (keyboard[i][j] == 'DIR' || keyboard[i][j] == 'BACKSPACE'
+                || keyboard[i][j] == 'AUTO CHECK' || keyboard[i][j] == 'REVEAL 5 LETTERS'
+                || keyboard[i][j] == 'REVEAL') {
                 if (keyboard[i][j] == 'BACKSPACE') {
                     $("#keyboard_line"+(i+1)).append(
                         "<div><button class='keyboard-button special-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><i class='fa-sharp fa-solid fa-delete-left'></i></button></div>"
                     )
+                } else if (keyboard[i][j] == 'DIR') {
+                    $("#keyboard_line"+(i+1)).append(
+                        "<div><button class='keyboard-button special-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><i class='fa-sharp fa-solid fa-rotate'></i></button></div>"
+                    )
                 } else {
                     $("#keyboard_line"+(i+1)).append(
-                        "<div><button class='keyboard-button special-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><p>SEND</p></button></div>"
+                        "<div><button class='keyboard-button special-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><p>"+keyboard[i][j]+"</p></button></div>"
                     )
                 }
             } else {
@@ -71,3 +103,21 @@ $(document).ready(function(){
     })
 
 })
+
+function shuffle(array) {
+    var m = array.length, t, i;
+
+    // While there remain elements to shuffle…
+    while (m) {
+
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+
+    return array;
+  }

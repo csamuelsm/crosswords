@@ -1,3 +1,6 @@
+var biggest_x;
+var biggest_y;
+
 async function read_game(lang, game_mode) {
     /*
         Recebe linguagem do jogo e game mode e retorna os dados do JSON
@@ -56,8 +59,8 @@ async function generate_grid(data) {
 }
 
 function create_layout(grid) {
-    let biggest_x = -1;
-    let biggest_y = -1;
+    biggest_x = -1;
+    biggest_y = -1;
     for (const [key, value] of Object.entries(grid)) {
         // encontra o maior valor de x e y
         let position = key.split(',');
@@ -72,7 +75,7 @@ function create_layout(grid) {
         for (let j = 0; j < biggest_x; j++) {
             if (`${j},${i}` in grid && grid[`${j},${i}`]['resposta'] != undefined) {
                 $(`#line${i}`).append(
-                    '<div x=' + j + ' y=' + i + ' value="' + grid[`${j},${i}`]['resposta'] + '" class="tile"></div>'
+                    '<div x=' + j + ' y=' + i + ' value="' + grid[`${j},${i}`]['resposta'] + '" filled=0 verified=0 answer=none class="tile"></div>'
                 );
             } else {
                 $(`#line${i}`).append(
