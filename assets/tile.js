@@ -112,7 +112,13 @@ function right_tile() {
         update(parseInt(curr_x)+1, parseInt(curr_y), dir);
         //curr_x = parseInt(curr_x)+1;
     } else {
-        next_empty_tile();
+        if (curr_x = biggest_x - 1 && curr_y == biggest_y - 1) {
+            console.log('dir = 1, next empty tile')
+            dir = 1;
+            next_empty_tile();
+        } else {
+            next_empty_tile();
+        }
     }
 
 }
