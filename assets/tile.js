@@ -1,11 +1,31 @@
 function next_empty_tile() {
-    let next_tile = $(`.tile[value != "#"][fill != 1][verified != 1]:first`);
+    var next_tile;
+    if (dir == 0) {
+        next_tile = $(`.tile[value != "#"][answer = "none"]`).filter(function(){
+            return parseInt($(this).attr("y")) == parseInt(curr_y) && parseInt($(this).attr("x")) > parseInt(curr_x);
+        });
+        next_tile = next_tile.first();
+    } else {
+        next_tile = $(`.tile[value != "#"][answer = "none"]`).filter(function(){
+            return parseInt($(this).attr("x")) == parseInt(curr_x) && parseInt($(this).attr("y")) > parseInt(curr_y);
+        })
+        next_tile = next_tile.first();
+    }
     if (next_tile.length > 0) {
         let x = next_tile.attr("x");
         let y = next_tile.attr("y");
         curr_x = x;
         curr_y = y;
         update(parseInt(x), parseInt(y), dir);
+    } else {
+        next_tile = $(`.tile[value != "#"][filled != 1][verified != 1]:first`);
+        if (next_tile.length > 0) {
+            let x = next_tile.attr("x");
+            let y = next_tile.attr("y");
+            curr_x = x;
+            curr_y = y;
+            update(parseInt(x), parseInt(y), dir);
+        }
     }
 }
 
@@ -40,8 +60,9 @@ function verify_word(tiles) {
 }
 
 function next_tile() {
+    verify_grid();
     if (dir == 0) {
-        if($(`.tile[x=${parseInt(curr_x) + 1}][y=${parseInt(curr_y)}][value!="#"]`).length > 0) {
+        if($(`.tile[x=${parseInt(curr_x) + 1}][y=${parseInt(curr_y)}][value!="#"][verified != 1]`).length > 0) {
             update(parseInt(curr_x)+1, curr_y, dir);
             //curr_x = parseInt(curr_x)+1;
         } else {
@@ -51,7 +72,7 @@ function next_tile() {
             next_empty_tile();
         }
     } else {
-        if($(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y) + 1}][value!="#"]`).length > 0) {
+        if($(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y) + 1}][value!="#"][verified != 1]`).length > 0) {
             update(parseInt(curr_x), parseInt(curr_y)+1, dir);
             //curr_y = parseInt(curr_y)+1;
         } else {
@@ -61,7 +82,6 @@ function next_tile() {
             next_empty_tile();
         }
     }
-    verify_grid();
 }
 
 function up_tile() {
@@ -130,11 +150,15 @@ function backspace() {
                 if (target.attr('verified') != 1) {
                     update(parseInt(curr_x)-1, curr_y, dir);
                     target.html("");
+                    target.attr("filled", "0");
+                    target.attr("answer", "none");
                 }
             } else {
                 let curr = $(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)}]`);
                 if (curr.attr('verified') != 1) {
                     curr.html("");
+                    curr.attr("filled", "0");
+                    curr.attr("answer", "none");
                 }
             }
             //curr_x = parseInt(curr_x)-1;
@@ -146,11 +170,15 @@ function backspace() {
                 if (target.attr('verified') != 1) {
                     update(parseInt(curr_x), parseInt(curr_y)-1, dir);
                     target.html("");
+                    target.attr("filled", "0");
+                    target.attr("answer", "none");
                 }
             } else {
                 let curr = $(`.tile[x=${parseInt(curr_x)}][y=${parseInt(curr_y)}]`);
                 if (curr.attr('verified') != 1) {
                     curr.html("");
+                    curr.attr("filled", "0");
+                    curr.attr("answer", "none");
                 }
             }
             //curr_x = parseInt(curr_x)-1;

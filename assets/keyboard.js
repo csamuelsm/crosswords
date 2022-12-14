@@ -39,8 +39,11 @@ function keyboard_entry(value) {
             object.attr("filled", 1);
             object.attr("verified", 1);
             object.addClass('correto');
+            if($('.tile[value != "#"][verified != 1]').length == 0) {
+                $('.start_tile').removeClass('start_tile');
+                $('.start_line').removeClass('start_line');
+            }
         }
-        //next_tile();
     } else if (value == 'REVEAL') {
         let items = $(`.tile[value != "#"][filled != 1][answer = none]`);
         items.each(function(index, element) {
@@ -51,7 +54,8 @@ function keyboard_entry(value) {
             object.attr("filled", 1);
             object.attr("verified", 1);
             object.addClass('correto');
-        })
+        });
+        next_tile();
     } else {
         if (!modal_open) {
             if ($(`.tile[x=${curr_x}][y=${curr_y}]`).attr('verified') != 1) {
