@@ -24,6 +24,8 @@ function select_pos(curr_x, curr_y, dir) {
     }
     let start_tile = $(`.tile[y=${curr_y}][x=${curr_x}]`);
     start_tile.addClass('start_tile');
+    if (dir == 0) start_tile.attr('visited_h', 1);
+    else start_tile.attr('visited_v', 1);
 }
 
 function setup() {
@@ -42,6 +44,8 @@ function setup() {
 }
 
 $(document).ready(function() {
+    //crosswordmini
+    //crosswordtradicional
     read_game('pt', 'crosswordmini')
         .then(data => generate_grid(data))
         .then(dict => {

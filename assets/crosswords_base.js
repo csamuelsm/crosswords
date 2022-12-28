@@ -75,7 +75,7 @@ function create_layout(grid) {
         for (let j = 0; j < biggest_x; j++) {
             if (`${j},${i}` in grid && grid[`${j},${i}`]['resposta'] != undefined) {
                 $(`#line${i}`).append(
-                    '<div x=' + j + ' y=' + i + ' value="' + grid[`${j},${i}`]['resposta'] + '" filled=0 verified=0 answer=none class="tile"></div>'
+                    '<div x=' + j + ' y=' + i + ' value="' + grid[`${j},${i}`]['resposta'] + '" filled=0 verified=0 visited_h=0 visited_v=0 answer=none class="tile"></div>'
                 );
             } else {
                 $(`#line${i}`).append(

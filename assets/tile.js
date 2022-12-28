@@ -1,13 +1,13 @@
 function next_empty_tile() {
     var next_tile;
     if (dir == 0) {
-        next_tile = $(`.tile[value != "#"][answer = "none"]`).filter(function(){
-            return parseInt($(this).attr("y")) == parseInt(curr_y) && parseInt($(this).attr("x")) > parseInt(curr_x);
+        next_tile = $(`.tile[value != "#"][answer = "none"][visited_h != 1]`).filter(function(){
+            return parseInt($(this).attr("y")) > parseInt(curr_y) || parseInt($(this).attr("x")) > parseInt(curr_x);
         });
         next_tile = next_tile.first();
     } else {
-        next_tile = $(`.tile[value != "#"][answer = "none"]`).filter(function(){
-            return parseInt($(this).attr("x")) == parseInt(curr_x) && parseInt($(this).attr("y")) > parseInt(curr_y);
+        next_tile = $(`.tile[value != "#"][answer = "none"][visited_v != 1]`).filter(function(){
+            return parseInt($(this).attr("x")) == parseInt(curr_x) || parseInt($(this).attr("y")) > parseInt(curr_y);
         })
         next_tile = next_tile.first();
     }
@@ -38,6 +38,20 @@ function verify_grid() {
     for (let i = 0; i < biggest_y; i++) {
         let tiles = $(`.tile[y = ${i}][value != "#"]`);
         verify_word(tiles);
+    }
+
+    let all_tiles = $('.tile[value != "#"]');
+    let win = true;
+    all_tiles.each(function(index, element) {
+        verified = $(this).attr('verified')
+        if (verified != 1) {
+            win = false
+        }
+    })
+    if (win) {
+        $('.start_line').removeClass('start_line');
+        $('.start_tile').removeClass('start_tile');
+        win_routine();
     }
 }
 

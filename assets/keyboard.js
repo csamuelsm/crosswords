@@ -1,7 +1,7 @@
 let keyboard = [['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
                 ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
                 ['DIR', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE'],
-                ['AUTO CHECK', 'REVEAL 5 LETTERS', 'REVEAL']]
+                ['Auto Check', 'Reveal 5 Letters', 'Reveal']]
 
 
 function keyboard_entry(value) {
@@ -29,7 +29,7 @@ function keyboard_entry(value) {
         if (dir == 0) dir = 1;
         else dir = 0;
         update(curr_x, curr_y, dir);
-    } else if (value == 'REVEAL 5 LETTERS') {
+    } else if (value == 'Reveal 5 Letters') {
         let items = shuffle($(`.tile[value != "#"][filled != 1][answer = none]`)).slice(0, 5);
         for (let i = 0; i < items.length; i++) {
             let object = $(items[i]);
@@ -44,8 +44,8 @@ function keyboard_entry(value) {
                 $('.start_line').removeClass('start_line');
             }
         }
-    } else if (value == 'REVEAL') {
-        let items = $(`.tile[value != "#"][filled != 1][answer = none]`);
+    } else if (value == 'Reveal') {
+        let items = $(`.tile[x=${curr_x}][y = ${curr_y}]`);
         items.each(function(index, element) {
             let object = $(this);
             let answer = object.attr("value");
@@ -77,8 +77,8 @@ $(document).ready(function(){
     for (let i = 0; i < keyboard.length; i++) {
         for (let j = 0; j < keyboard[i].length; j++){
             if (keyboard[i][j] == 'DIR' || keyboard[i][j] == 'BACKSPACE'
-                || keyboard[i][j] == 'AUTO CHECK' || keyboard[i][j] == 'REVEAL 5 LETTERS'
-                || keyboard[i][j] == 'REVEAL') {
+                || keyboard[i][j] == 'Auto Check' || keyboard[i][j] == 'Reveal 5 Letters'
+                || keyboard[i][j] == 'Reveal') {
                 if (keyboard[i][j] == 'BACKSPACE') {
                     $("#keyboard_line"+(i+1)).append(
                         "<div><button class='keyboard-button special-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><i class='fa-sharp fa-solid fa-delete-left'></i></button></div>"
