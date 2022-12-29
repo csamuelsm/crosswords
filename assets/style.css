@@ -80,10 +80,6 @@ i {
     transition: transform 0.8s, background-color 0.15s ease-in-out 0.05s;
 }
 
-.black {
-    background-color: black;
-}
-
 .dica-div {
     background-color: #FFC700;
     flex-wrap: nowrap;
@@ -165,6 +161,7 @@ i {
 .start_tile {
     background-color: #FFC700;
 }
+
 .correto {
     color: blue;
 }
@@ -310,4 +307,38 @@ i {
     border-radius: 4px;
     font-family: "Roboto";
     font-weight: 800;
+}
+
+.modal-tile {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    margin: 0;
+    text-transform: capitalize;
+    font-family: 'Roboto';
+    font-size: 28px;
+    text-align: center;
+    transition: transform 0.8s, background-color 0.15s ease-in-out 0.05s;
+}
+
+.modal-startline {
+    background-color: #F9F3D3;
+}
+
+.modal-starttile {
+    background-color: #FFC700;
+}
+
+.black {
+    background-color: black;
+}
+
+.modal-dica-div {
+    background-color: #FFC700;
+    flex-wrap: nowrap;
+    font-family: 'Roboto';
+    font-size: 18px;
+    line-height: 18px;
 }
