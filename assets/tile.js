@@ -1,4 +1,4 @@
-function next_empty_tile() {
+/*function next_empty_tile() {
     var next_tile;
     if (dir == 0) {
         next_tile = $(`.tile[value != "#"][answer = "none"][visited_h != 1]`).filter(function(){
@@ -25,6 +25,70 @@ function next_empty_tile() {
             curr_x = x;
             curr_y = y;
             update(parseInt(x), parseInt(y), dir);
+        }
+    }
+}*/
+
+function next_empty_tile() {
+    var next_tile;
+    // próximo no mesmo eixo
+    if (dir == 0) {
+        next_tile = $(`.tile[value != "#"][answer = "none"][y = ${curr_y}]`).filter(function(){
+            return parseInt($(this).attr("x")) > curr_x;
+        })
+    } else {
+        next_tile = $(`.tile[value != "#"][answer = "none"][x = ${curr_x}]`).filter(function(){
+            return parseInt($(this).attr("y")) > curr_y;
+        })
+    }
+    if (next_tile.length > 0) {
+        next_tile = next_tile.first();
+        let x = next_tile.attr("x");
+        let y = next_tile.attr("y");
+        curr_x = x;
+        curr_y = y;
+        update(parseInt(x), parseInt(y), dir);
+    } else {
+        // próximo na mesma direção
+        if (dir == 0) {
+            next_tile = $(`.tile[value != "#"][answer = "none"]`).filter(function(){
+                return parseInt($(this).attr("y")) > curr_y;
+            })
+        } else {
+            next_tile = $(`.tile[value != "#"][answer = "none"]`).filter(function(){
+                return parseInt($(this).attr("x")) > curr_x;
+            })
+        }
+        if (next_tile.length > 0) {
+            next_tile = next_tile.first();
+            let x = next_tile.attr("x");
+            let y = next_tile.attr("y");
+            curr_x = x;
+            curr_y = y;
+            update(parseInt(x), parseInt(y), dir);
+        } else {
+            // próximo que ainda não foi visitado
+            if (dir == 0) {
+                next_tile = $(`.tile[value != "#"][answer = "none"][visited_h != 1]`)
+            } else {
+                next_tile = $(`.tile[value != "#"][answer = "none"][visited_v != 1]`)
+            }
+            if (next_tile.length > 0) {
+                next_tile = next_tile.first();
+                let x = next_tile.attr("x");
+                let y = next_tile.attr("y");
+                curr_x = x;
+                curr_y = y;
+                update(parseInt(x), parseInt(y), dir);
+            } else {
+                next_tile = $(`.tile[value != "#"][answer = "none"]`)
+                next_tile = next_tile.first();
+                let x = next_tile.attr("x");
+                let y = next_tile.attr("y");
+                curr_x = x;
+                curr_y = y;
+                update(parseInt(x), parseInt(y), dir);
+            }
         }
     }
 }
