@@ -77,7 +77,7 @@ i {
     font-family: 'Roboto';
     font-size: 28px;
     text-align: center;
-    transition: transform 0.8s, background-color 0.15s ease-in-out 0.05s;
+    transition: transform 0.8s, background-color 0.15s ease-in-out 0.05s, color 0.15s ease-in-out;
 }
 
 .dica-div {
@@ -264,7 +264,7 @@ i {
     margin-bottom: 0;
 }
 
-#ep_banner {
+#ep_banner1, #ep_banner2, #ep_banner3 {
     width: 100%;
 }
 
@@ -345,4 +345,21 @@ i {
 
 .playing_time {
     color: #76C117;
+}
+
+.change_dir_icon {
+    height: 30px;
+    width: auto;
+}
+
+.booster_key {
+    height: 37px;
+    width: auto;
+}
+
+.booster-button {
+    min-width: 37px;
+    padding: 1px 2px 1px 2px;
+    border-radius: 3px;
+    filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.18));
 }

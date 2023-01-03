@@ -46,12 +46,12 @@ function win_routine(){
     if(api.get(`${getGameLang()}_best_time`)) {
         best_time = api.get(`${getGameLang()}_best_time`);
         if (parseInt(api.get(`${getGameLang()}_best_time`)) > parseInt(seconds)) {
-            best_time = seconds;
+            best_time = parseFloat(seconds).toFixed(1);
             api.set(`${getGameLang()}_best_time`, parseInt(seconds));
         }
     } else {
-        best_time = seconds;
-        api.set(`${getGameLang()}_best_time`, parseInt(seconds));
+        best_time = parseFloat(seconds).toFixed(1);
+        api.set(`${getGameLang()}_best_time`, parseFloat(seconds).toFixed(1));
     }
 
     api.set(`${getGameLang()}_finished`, true);

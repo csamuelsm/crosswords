@@ -1,7 +1,7 @@
 let keyboard = [['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
                 ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
                 ['DIR', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE'],
-                ['Auto Check', 'Reveal 5 Letters', 'Reveal']]
+                ['Reveal 5 Letters', 'Reveal']]
 
 
 function keyboard_entry(value) {
@@ -15,6 +15,7 @@ function keyboard_entry(value) {
         || $('#onboarding-4').hasClass('show')
         || $('#onboarding-5').hasClass('show')
         || $('#onboarding-6').hasClass('show')
+        || $('#onboarding-7').hasClass('show')
         || $('#configuracoes').hasClass('show')
         || $('#finish').hasClass('show') )
         {
@@ -26,9 +27,11 @@ function keyboard_entry(value) {
     if (value == 'BACKSPACE') {
         backspace();
     } else if (value == 'DIR') {
-        if (dir == 0) dir = 1;
-        else dir = 0;
-        update(curr_x, curr_y, dir);
+        if (!finished) {
+            if (dir == 0) dir = 1;
+            else dir = 0;
+            update(curr_x, curr_y, dir);
+        }
     } else if (value == 'Reveal 5 Letters') {
         let items = shuffle($(`.tile[value != "#"][filled != 1][answer = none]`)).slice(0, 5);
         for (let i = 0; i < items.length; i++) {
@@ -44,6 +47,7 @@ function keyboard_entry(value) {
                 $('.start_line').removeClass('start_line');
             }
         }
+        verify_grid();
     } else if (value == 'Reveal') {
         let items = $(`.tile[x=${curr_x}][y = ${curr_y}]`);
         items.each(function(index, element) {
@@ -56,6 +60,9 @@ function keyboard_entry(value) {
             object.addClass('correto');
         });
         next_tile();
+        verify_grid();
+    } else if (value == 'Auto Check') {
+        //AUTO CHECK TODO
     } else {
         if (!modal_open) {
             if ($(`.tile[x=${curr_x}][y=${curr_y}]`).attr('verified') != 1) {
@@ -85,7 +92,15 @@ $(document).ready(function(){
                     )
                 } else if (keyboard[i][j] == 'DIR') {
                     $("#keyboard_line"+(i+1)).append(
-                        "<div><button class='keyboard-button special-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><i class='fa-sharp fa-solid fa-rotate'></i></button></div>"
+                        "<div><button class='keyboard-button special-button booster-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><img class='change_dir_icon' src='assets/buttons/change_dir_icon.png'/></button></div>"
+                    )
+                } else if (keyboard[i][j] == 'Reveal') {
+                    $("#keyboard_line"+(i+1)).append(
+                        "<div><button class='keyboard-button special-button booster-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><img class='booster_key' src='assets/buttons/mini/"+ getGameLang() +"/reveal.png'/></button></button></div>"
+                    )
+                } else if (keyboard[i][j] == 'Reveal 5 Letters') {
+                    $("#keyboard_line"+(i+1)).append(
+                        "<div><button class='keyboard-button special-button booster-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><img class='booster_key' src='assets/buttons/mini/"+ getGameLang() +"/reveal_k.png'/></button></button></div>"
                     )
                 } else {
                     $("#keyboard_line"+(i+1)).append(

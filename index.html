@@ -24,6 +24,7 @@
 
     <!--<script src="/js/ep-commons.js"></script>-->
     <script src="./assets/ep-commons.js"></script>
+    <script src="assets/language.js"></script>
     <script src="assets/crosswords_base.js"></script>
     <script src="assets/win.js"></script>
     <script src="assets/countdown.js"></script>
@@ -71,7 +72,7 @@
         </div>
 
     <div class="container text-center ep_banner_div hide align-items-center justify-content-center">
-        <a  class="ep_banner_link" href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" src="assets/banners/generic_pt.png"/></a>
+        <a  class="ep_banner_link" href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner1" src="assets/banners/generic_pt.png"/></a>
     </div>
 
     <div class="container game-cont text-center d-flex justify-content-center align-items-center">
@@ -81,7 +82,7 @@
     </div>
 
     <div class="container text-center ep_banner_div align-items-center justify-content-center">
-        <a class="ep_banner_link" href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" src="assets/banners/generic_pt.png"/></a>
+        <a class="ep_banner_link" href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner2" src="assets/banners/generic_pt.png"/></a>
     </div>
 
     <!--<div class="container text-center ep_banner_div hide align-items-center justify-content-center">
@@ -93,13 +94,13 @@
         <div class="keyboard row col-md-8 d-flex align-items-center justify-content-center">
             <div class="w-100 shadow text-center d-flex flex-row align-middle mb-3 p-3 dica-div align-items-center justify-content-between">
                 <div>
-                    <i class="fa-sharp fa-solid fa-circle-left"></i>
+                    <i class="fa-sharp fa-solid fa-circle-left left-dica"></i>
                 </div>
                 <div class="dica px-5">
 
                 </div>
                 <div>
-                    <i class="fa-sharp fa-solid fa-circle-right"></i>
+                    <i class="fa-sharp fa-solid fa-circle-right right-dica"></i>
                 </div>
             </div>
             <div class="col-12 d-flex align-items-center justify-content-center" id="keyboard_line1"></div>
@@ -160,7 +161,7 @@
                 <img src="assets/Crossword.svg" style="height: 150px;width:auto;" alt="logo"/>
                 <div class="col-12 row align-items-center justify-content-center">
                     <div class="row align-items-center mt-4 col-10">
-                        <button class="yes-button" data-bs-target="#onboarding-2" data-bs-toggle="modal">HOW TO PLAY</button>
+                        <button class="yes-button" data-bs-target="#onboarding-2" data-bs-toggle="modal"><span class="how_to_play">HOW TO PLAY</span></button>
                     </div>
                 </div>
             </div>
@@ -227,7 +228,7 @@
                         <i class="fa-sharp fa-solid fa-circle-left"></i>
                     </div>
                     <div class="modal-dica px-5">
-                        This is where you can read the clue
+                        <span class="onboarding-dica">This is where you can read the clue</span>
                     </div>
                     <div>
                         <i class="fa-sharp fa-solid fa-circle-right"></i>
@@ -235,7 +236,7 @@
                 </div>
                 <div class="col-12 row align-items-center justify-content-center">
                     <div class="row align-items-center mt-4 col-10">
-                        <button class="yes-button" data-bs-target="#onboarding-3" data-bs-toggle="modal">NEXT 1/6</button>
+                        <button class="yes-button" data-bs-target="#onboarding-3" data-bs-toggle="modal"><span class="next">NEXT</span> 1/6</button>
                     </div>
                 </div>
             </div>
@@ -263,7 +264,7 @@
                         <i class="fa-sharp fa-solid fa-circle-left"></i>
                     </div>
                     <div class="modal-dica px-5">
-                        This is where you can read the clue
+                        <span class="onboarding-dica">This is where you can read the clue</span>
                     </div>
                     <div>
                         <i class="fa-sharp fa-solid fa-circle-right"></i>
@@ -271,7 +272,7 @@
                 </div>
                 <div class="col-12 row align-items-center justify-content-center">
                     <div class="row align-items-center mt-4 col-10">
-                        <button class="yes-button" data-bs-target="#onboarding-4" data-bs-toggle="modal">NEXT 2/6</button>
+                        <button class="yes-button" data-bs-target="#onboarding-4" data-bs-toggle="modal"><span class="next">NEXT</span> 2/6</button>
                     </div>
                 </div>
             </div>
@@ -304,7 +305,7 @@
                 </div>
                 <div class="col-12 row align-items-center justify-content-center">
                     <div class="row align-items-center mt-4 col-10">
-                        <button class="yes-button" data-bs-target="#onboarding-5" data-bs-toggle="modal">NEXT 3/6</button>
+                        <button class="yes-button" data-bs-target="#onboarding-5" data-bs-toggle="modal"><span class="next">NEXT</span> 3/6</button>
                     </div>
                 </div>
             </div>
@@ -370,7 +371,7 @@
 
                 <div class="col-12 row align-items-center justify-content-center">
                     <div class="row align-items-center mt-4 col-10">
-                        <button class="yes-button" data-bs-target="#onboarding-6" data-bs-toggle="modal">NEXT 4/6</button>
+                        <button class="yes-button" data-bs-target="#onboarding-6" data-bs-toggle="modal"><span class="next">NEXT</span> 4/6</button>
                     </div>
                 </div>
             </div>
@@ -392,10 +393,10 @@
             <div class="modal-body p-5 row align-items-center justify-content-center">
                 <h6><strong>EVERYDAY CROSSWORDS</strong></h6>
                 <p class="onboarding-text">Oh, this key on the keypad changes the direction of the word as well. So many options!</p>
-                <img src="assets/switch_dir.svg" style="height: 150px;width:auto;" alt="switch_dir_key"/>
+                <img class="change_dir_key_img" src="assets/buttons/change_dir.png" style="height: 75px;width:auto;" alt="change_dir_key"/>
                 <div class="col-12 row align-items-center justify-content-center">
                     <div class="row align-items-center mt-4 col-10">
-                        <button class="yes-button" data-bs-target="#onboarding-7" data-bs-toggle="modal">NEXT 5/6</button>
+                        <button class="yes-button" data-bs-target="#onboarding-7" data-bs-toggle="modal"><span class="next">NEXT</span> 5/6</button>
                     </div>
                 </div>
             </div>
@@ -417,11 +418,10 @@
             <div class="modal-body p-5 row align-items-center justify-content-center">
                 <h6><strong>EVERYDAY CROSSWORDS</strong></h6>
                 <p class="onboarding-text">Finally, if you get stuck, we have boosters to un-stuck you. Good luck, champion!</p>
-                <img src="assets/reveal_letters.svg" style="height: 150px;width:auto;" alt="reveal_letters_key"/>
-                <img src="assets/reveal_tile.svg" style="height: 150px;width:auto;" alt="reveal_tile_key"/>
+                <img class="boosters_keys_img" src="assets/buttons/mini_en.png" style="height: 150px;width:auto;" alt="boosters_keys"/>
                 <div class="col-12 row align-items-center justify-content-center">
                     <div class="row align-items-center mt-4 col-10">
-                        <button class="yes-button" data-bs-target="#onboarding-7" data-bs-dismiss="modal">LET'S GO</button>
+                        <button class="yes-button" data-bs-target="#onboarding-7" data-bs-dismiss="modal"><span class="lets_go">LET'S GO!</span></button>
                     </div>
                 </div>
             </div>
@@ -475,16 +475,16 @@
             <div class="modal-body p-5 text-center row align-items-center justify-content-center">
 
                 <!--<h4 class="finished_text">Quer jogar mais? Baixe o app!</h4>-->
-                <a  class="ep_banner_link" href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" class="mb-3" src="assets/banners/generic_pt.png"/></a>
+                <a  class="ep_banner_link" href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner3" class="mb-3" src="assets/banners/generic_pt.png"/></a>
 
                 <h6 class="mb-0"><strong class="finished_title">Jogo Finalizado</strong></h6>
-                <h3 class="mt-0"><strong class="finished_text">Parabéns! <span class='playing_time'></span></strong></h3>
+                <h3 class="mt-0"><strong><span class="finished_text">Parabéns!</span> <span class='playing_time'></span></strong></h3>
                 <div class="countdown-div">
                     <p class="countdown_text">Próximo jogo:</p>
                     <h1 class="countdown"></h1>
                 </div>
 
-                <hr/>
+                <!--<hr/>-->
 
                     <!--<div class="accordion text-center mb-3" id="resposta">
                         <div class="accordion-item text-center">

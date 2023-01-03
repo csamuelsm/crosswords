@@ -18,12 +18,20 @@ function clean_current_selection() {
 function select_pos(curr_x, curr_y, dir) {
     clean_current_selection();
     if (dir == 0) {
+        let curr_dica = grid[`${curr_x},${curr_y}`]['dica-horizontal'];
         $(`.tile[y=${curr_y}][value != "#"]`).each(function() {
-            $(this).addClass('start_line');
+            let tile_x = parseInt($(this).attr('x'));
+            let tile_y = parseInt($(this).attr('y'));
+            if (curr_dica == grid[`${tile_x},${tile_y}`]['dica-horizontal'])
+                $(this).addClass('start_line');
         })
     } else {
+        let curr_dica = grid[`${curr_x},${curr_y}`]['dica-vertical'];
         $(`.tile[x=${curr_x}][value != "#"]`).each(function() {
-            $(this).addClass('start_line');
+            let tile_x = parseInt($(this).attr('x'));
+            let tile_y = parseInt($(this).attr('y'));
+            if (curr_dica == grid[`${tile_x},${tile_y}`]['dica-vertical'])
+                $(this).addClass('start_line');
         })
     }
     let start_tile = $(`.tile[y=${curr_y}][x=${curr_x}]`);
@@ -58,7 +66,7 @@ $(document).ready(function() {
 
     //crosswordmini
     //crosswordtradicional
-    read_game('pt', 'crosswordmini')
+    read_game(getGameLang(), 'crosswordtradicional')
         .then(data => generate_grid(data))
         .then(dict => {
             grid = dict;
