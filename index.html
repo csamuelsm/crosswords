@@ -26,6 +26,7 @@
     <script src="./assets/ep-commons.js"></script>
     <script src="assets/crosswords_base.js"></script>
     <script src="assets/win.js"></script>
+    <script src="assets/countdown.js"></script>
     <script src="assets/onboarding.js"></script>
     <script src="assets/tile.js"></script>
     <script src="assets/keyboard.js"></script>
@@ -70,7 +71,7 @@
         </div>
 
     <div class="container text-center ep_banner_div hide align-items-center justify-content-center">
-        <a href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" src="assets/banners/728 x 90 - Generic Ad - EN.png"/></a>
+        <a href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" src="assets/banners/generic_pt.png"/></a>
     </div>
 
     <div class="container game-cont text-center d-flex justify-content-center align-items-center">
@@ -79,9 +80,13 @@
         </div>
     </div>
 
-    <div class="container text-center ep_banner_div hide align-items-center justify-content-center">
-        <a href="https://jogoswebep.onelink.me/pKzT/password "><button class='play_more_button shadow mb-3'><h2>JOGUE MAIS</h2></button></a>
+    <div class="container text-center ep_banner_div align-items-center justify-content-center">
+        <a href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" src="assets/banners/generic_pt.png"/></a>
     </div>
+
+    <!--<div class="container text-center ep_banner_div hide align-items-center justify-content-center">
+        <a href="https://jogoswebep.onelink.me/pKzT/password "><button class='play_more_button shadow mb-3'><h2>JOGUE MAIS</h2></button></a>
+    </div>-->
 
     <div class="container keyboard-cont text-center d-flex justify-content-center align-items-center">
 
@@ -470,18 +475,18 @@
             <div class="modal-body p-5 text-center row align-items-center justify-content-center">
 
                 <!--<h4 class="finished_text">Quer jogar mais? Baixe o app!</h4>-->
-                <a href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" class="mb-3" src="assets/banners/728 x 90 - Generic Ad - EN.png"/></a>
+                <a href="https://jogoswebep.onelink.me/pKzT/password "><img id="ep_banner" class="mb-3" src="assets/banners/generic_pt.png"/></a>
 
                 <h6 class="mb-0"><strong class="finished_title">Jogo Finalizado</strong></h6>
-                <h3 class="mt-0"><strong class="finished_text">Parabéns!</strong></h3>
+                <h3 class="mt-0"><strong class="finished_text">Parabéns! <span class='playing_time'></span></strong></h3>
                 <div class="countdown-div">
-                    <p class="countdown_text">Próxima palavra:</p>
+                    <p class="countdown_text">Próximo jogo:</p>
                     <h1 class="countdown"></h1>
                 </div>
 
                 <hr/>
 
-                    <div class="accordion text-center mb-3" id="resposta">
+                    <!--<div class="accordion text-center mb-3" id="resposta">
                         <div class="accordion-item text-center">
                             <h3 class="accordion-header text-center" id="headingOne">
                             <button class="accordion-button d-block text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -494,7 +499,7 @@
                             </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
                 <hr/>
 
@@ -505,19 +510,19 @@
                             <h1 class="streak">0</h1>
                         </div>
                         <div class="col-6">
-                            <p class="stats_best">Melhor sequência</p>
+                            <p class="stats_best">Recorde de vitórias</p>
                             <h1 class="best_streak">0</h1>
                         </div>
                     </div>
 
                     <div class="col-12 row">
                         <div class="col-6">
-                            <p class="stats_tries">Tentativas</p>
-                            <h1 class="tries">0</h1>
+                            <p class="stats_tries">Melhor tempo</p>
+                            <h1 class="best_time">0</h1>
                         </div>
                         <div class="col-6">
-                            <p class="stats_challenges">Desafios jogados</p>
-                            <h1 class="times_played">0</h1>
+                            <p class="stats_challenges">Jogos jogados</p>
+                            <h1 class="played">0</h1>
                         </div>
                     </div>
                 </div>
@@ -527,7 +532,7 @@
             <div class="modal-footer">
                 <div class="col-12 row align-items-center justify-content-center">
                     <div class="row align-items-center mt-4 col-10">
-                        <a class="twitter-share-link" href="https://twitter.com/intent/tweet?text=I%20played%20Password!%0A%0Ahttps://csamuelsm.github.io/senha">
+                        <a class="twitter-share-link" href="https://twitter.com/intent/tweet?text=I%20played%20Crosswords!%0A%0A">
                             <button class="yes-button stats_share">COMPARTILHAR</button>
                         </a>
                     </div>
