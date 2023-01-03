@@ -45,13 +45,19 @@ function setup() {
     else dica = grid[`${curr_x},${curr_y}`]['dica-vertical'];
 
     $('.dica').html(dica);
+
 }
 
 $(document).ready(function() {
-    //crosswordmini
-    //crosswordtradicional
     start_time = new Date();
 
+    //setuping os links
+    $('.ep_banner_link').each((index, element) => {
+        $(element).attr('href', getInstallUrl())
+    })
+
+    //crosswordmini
+    //crosswordtradicional
     read_game('pt', 'crosswordmini')
         .then(data => generate_grid(data))
         .then(dict => {
