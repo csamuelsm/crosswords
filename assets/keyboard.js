@@ -33,34 +33,38 @@ function keyboard_entry(value) {
             update(curr_x, curr_y, dir);
         }
     } else if (value == 'Reveal 5 Letters') {
-        let items = shuffle($(`.tile[value != "#"][filled != 1][answer = none]`)).slice(0, 5);
-        for (let i = 0; i < items.length; i++) {
-            let object = $(items[i]);
-            let answer = object.attr("value");
-            object.html(`<p>${answer.toUpperCase()}</p>`);
-            object.attr("answer", answer.toUpperCase());
-            object.attr("filled", 1);
-            object.attr("verified", 1);
-            object.addClass('correto');
-            if($('.tile[value != "#"][verified != 1]').length == 0) {
-                $('.start_tile').removeClass('start_tile');
-                $('.start_line').removeClass('start_line');
+        if (!finished) {
+            let items = shuffle($(`.tile[value != "#"][filled != 1][answer = none]`)).slice(0, 5);
+            for (let i = 0; i < items.length; i++) {
+                let object = $(items[i]);
+                let answer = object.attr("value");
+                object.html(`<p>${answer.toUpperCase()}</p>`);
+                object.attr("answer", answer.toUpperCase());
+                object.attr("filled", 1);
+                object.attr("verified", 1);
+                object.addClass('correto');
+                if($('.tile[value != "#"][verified != 1]').length == 0) {
+                    $('.start_tile').removeClass('start_tile');
+                    $('.start_line').removeClass('start_line');
+                }
             }
+            verify_grid();
         }
-        verify_grid();
     } else if (value == 'Reveal') {
-        let items = $(`.tile[x=${curr_x}][y = ${curr_y}]`);
-        items.each(function(index, element) {
-            let object = $(this);
-            let answer = object.attr("value");
-            object.html(`<p>${answer.toUpperCase()}</p>`);
-            object.attr("answer", answer.toUpperCase());
-            object.attr("filled", 1);
-            object.attr("verified", 1);
-            object.addClass('correto');
-        });
-        next_tile();
-        verify_grid();
+        if (!finished) {
+            let items = $(`.tile[x=${curr_x}][y = ${curr_y}]`);
+            items.each(function(index, element) {
+                let object = $(this);
+                let answer = object.attr("value");
+                object.html(`<p>${answer.toUpperCase()}</p>`);
+                object.attr("answer", answer.toUpperCase());
+                object.attr("filled", 1);
+                object.attr("verified", 1);
+                object.addClass('correto');
+            });
+            next_tile();
+            verify_grid();
+        }
     } else if (value == 'Auto Check') {
         //AUTO CHECK TODO
     } else {
