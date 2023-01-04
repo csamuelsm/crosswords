@@ -124,6 +124,9 @@ async function share() {
         await navigator.share(shareData)
     } catch (error) {
         navigator.clipboard.writeText(string + `${gfg}`);
-        alert("Copiado!");
+        //alert("Copiado para a área de transferência!");
+        const t = $('#copiado')
+        const toast = new bootstrap.Toast(t);
+        toast.show();
     }
 }
