@@ -66,7 +66,7 @@ $(document).ready(function() {
 
     //crosswordmini
     //crosswordtradicional
-    read_game(getGameLang(), 'crosswordtradicional')
+    read_game(getGameLang(), 'crosswordmini')
         .then(data => generate_grid(data))
         .then(dict => {
             grid = dict;
@@ -122,7 +122,11 @@ $(document).ready(function() {
                 const statisticsModal = new bootstrap.Modal(document.getElementById('finish'))
                 statisticsModal.show()
 
-                $('.twitter-share-link').attr('href', getTextForTwitter());
+                //$('.twitter-share-link').attr('href', getTextForTwitter());
+                const btn = document.querySelector('.stats_share');
+                btn.addEventListener('click', async () => {
+                    await share()
+                });
             }
         });
 })

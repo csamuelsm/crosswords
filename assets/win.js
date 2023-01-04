@@ -68,10 +68,14 @@ function win_routine(){
     const statisticsModal = new bootstrap.Modal(document.getElementById('finish'))
     statisticsModal.show()
 
-    $('.twitter-share-link').attr('href', getTextForTwitter());
+    //$('.twitter-share-link').attr('href', getTextForTwitter());
+    const btn = document.querySelector('.stats_share');
+    btn.addEventListener('click', async () => {
+        await share()
+    });
 }
 
-function getTextForTwitter() {
+/*function getTextForTwitter() {
     var string;
     if (api.get('lang') == "en") {
         string = "I%20played%20Crosswords!"
@@ -92,4 +96,34 @@ function getTextForTwitter() {
     //console.log("Share link cookie now set")
 
     return "https://twitter.com/intent/tweet?text=" + string
+}*/
+
+async function share() {
+    var string;
+    if (api.get('lang') == "en") {
+        string = "I played Crosswords! "
+    } else if (api.get('lang') == "pt") {
+        string = "Eu joguei Cruzadinha! "
+    } else if (api.get('lang') == "de") {
+        string = "Ich habe Crosswords gespielt! "
+    } else {
+        string = "I played Crosswords! "
+    }
+
+    let time = parseFloat(api.get(`${getGameLang()}_time`));
+    string = string + `${time.toFixed(1)}s\n\n`
+
+    var gfg = document.URL;
+
+    const shareData = {
+        text: string,
+        url: gfg
+    };
+
+    try {
+        await navigator.share(shareData)
+    } catch (error) {
+        navigator.clipboard.writeText(string + `${gfg}`);
+        alert("Copiado!");
+    }
 }

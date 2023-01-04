@@ -74,6 +74,10 @@ $(document).ready(function(){
         $('.played').html(played);
         $('.playing_time').html(`${time.toFixed(1)}s`);
 
-        $('.twitter-share-link').attr('href', getTextForTwitter());
+        //$('.twitter-share-link').attr('href', getTextForTwitter());
+        const btn = document.querySelector('.stats_share');
+        btn.addEventListener('click', async () => {
+            await share()
+        });
     })
 })
