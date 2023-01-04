@@ -66,7 +66,7 @@ $(document).ready(function() {
 
     //crosswordmini
     //crosswordtradicional
-    read_game(getGameLang(), 'crosswordmini')
+    read_game(getGameLang(), 'crosswordtradicional')
         .then(data => generate_grid(data))
         .then(dict => {
             grid = dict;
