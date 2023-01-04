@@ -5,7 +5,11 @@ async function read_game(lang, game_mode) {
     /*
         Recebe linguagem do jogo e game mode e retorna os dados do JSON
     */
-    const today = new Date();
+    const date = new Date();
+    let month = date.getMonth();
+    let day = date.getDate();
+    let year = date.getFullYear();
+    const today = new Date(year, month, day, 0, 0, 0, 0);
     let timestamp = today.setUTCHours(0, 0, 0, 0);
     let url = `https://content.everydaycrossword.com/web-games/${game_mode}/${lang}/${timestamp}.json`;
     let data = await $.getJSON(url);
