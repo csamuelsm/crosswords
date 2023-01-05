@@ -396,3 +396,13 @@ i {
 #copiado {
     z-index: 9999999;
 }
+
+#onboarding-1 .modal-content,
+#onboarding-2 .modal-content,
+#onboarding-3 .modal-content,
+#onboarding-4 .modal-content,
+#onboarding-5 .modal-content,
+#onboarding-6 .modal-content,
+#onboarding-7 .modal-content {
+    height: 80vh;
+}
