@@ -34,7 +34,7 @@ function keyboard_entry(value) {
         }
     } else if (value == 'Reveal 5 Letters') {
         if (!finished) {
-            let items = shuffle($(`.tile[value != "#"][filled != 1][answer = none]`)).slice(0, 5);
+            let items = shuffle($(`.tile[value != "#"][filled != 1][answer = none]`)).slice(0, getK());
             for (let i = 0; i < items.length; i++) {
                 let object = $(items[i]);
                 let answer = object.attr("value");
@@ -100,11 +100,11 @@ $(document).ready(function(){
                     )
                 } else if (keyboard[i][j] == 'Reveal') {
                     $("#keyboard_line"+(i+1)).append(
-                        "<div><button class='keyboard-button special-button booster-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><img class='booster_key' src='assets/buttons/mini/"+ getGameLang() +"/reveal.png'/></button></button></div>"
+                        "<div><button class='keyboard-button special-button booster-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><img class='booster_key' src='assets/buttons/" + getGameMode() + "/"+ getGameLang() +"/reveal.png'/></button></button></div>"
                     )
                 } else if (keyboard[i][j] == 'Reveal 5 Letters') {
                     $("#keyboard_line"+(i+1)).append(
-                        "<div><button class='keyboard-button special-button booster-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><img class='booster_key' src='assets/buttons/mini/"+ getGameLang() +"/reveal_k.png'/></button></button></div>"
+                        "<div><button class='keyboard-button special-button booster-button' value='"+keyboard[i][j]+"' id='"+keyboard[i][j]+"'><img class='booster_key' src='assets/buttons/" + getGameMode() + "/"+ getGameLang() +"/reveal_k.png'/></button></button></div>"
                     )
                 } else {
                     $("#keyboard_line"+(i+1)).append(

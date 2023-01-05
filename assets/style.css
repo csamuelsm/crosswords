@@ -1,14 +1,15 @@
 html, body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: #F3F4F4;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
     padding: 5px;
-    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -67,8 +68,8 @@ i {
 }
 
 .tile {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     background-color: white;
     border: 2px solid black;
     cursor: pointer;
@@ -79,6 +80,10 @@ i {
     text-align: center;
     transition: transform 0.8s, background-color 0.15s ease-in-out 0.05s, color 0.15s ease-in-out;
     padding: 0;
+}
+
+.title_top {
+    font-size: 22px;
 }
 
 @media (max-width: 360px)
@@ -98,8 +103,8 @@ i {
 @media (min-width: 361px) and (max-width: 620px)
 {
     .tile {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         font-size: 25px;
         padding: 0;
     }
@@ -293,7 +298,10 @@ i {
     margin-bottom: 0;
 }
 
+
+
 #ep_banner1, #ep_banner2, #ep_banner3 {
+    height: auto;
     width: 100%;
 }
 
@@ -339,8 +347,8 @@ i {
 }
 
 .modal-tile {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     background-color: white;
     border: 2px solid black;
     cursor: pointer;
@@ -405,4 +413,8 @@ i {
 #onboarding-6 .modal-content,
 #onboarding-7 .modal-content {
     height: 80vh;
+}
+
+.ep_banner_div {
+    flex: auto;
 }

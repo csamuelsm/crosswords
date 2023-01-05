@@ -25,11 +25,20 @@ $(document).ready(function(){
         end_time = new Date();
         let seconds = Math.abs(start_time.getTime() - end_time.getTime())/1000;
         //cookies
+        var wins;
         var win_streak;
         var best_streak;
         var played;
         var time;
         var best_time;
+
+        if (api.get(`${getGameLang()}_wins`)) {
+            wins = parseInt(api.get(`${getGameLang()}_wins`));
+        }
+        else {
+            wins = 0;
+            api.set(`${getGameLang()}_wins`, 0);
+        }
 
         if (api.get(`${getGameLang()}_win_streak`)) {
             win_streak = api.get(`${getGameLang()}_win_streak`);
@@ -67,12 +76,14 @@ $(document).ready(function(){
         api.set(`${getGameLang()}_finished`, true);
         api.set(`${getGameLang()}_last_played`, new Date());
 
+        let percent_winning = parseFloat(parseFloat(wins)/parseFloat(played))*100;
+
         //finish screen
         $('.streak').html(win_streak);
         $('.best_streak').html(best_streak);
-        $('.best_time').html(`${best_time}s`);
+        $('.best_time').html(`${percent_winning.toFixed(1)}%`);
         $('.played').html(played);
-        $('.playing_time').html(`${time.toFixed(1)}s`);
+        //$('.playing_time').html(`${time.toFixed(1)}s`);
 
         //$('.twitter-share-link').attr('href', getTextForTwitter());
         const btn = document.querySelector('.stats_share');

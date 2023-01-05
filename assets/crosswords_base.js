@@ -9,6 +9,11 @@ function getGameMode() {
     }
 }
 
+function getK() {
+    if (getGameMode() == 'crosswordmini') return 5;
+    else return 10;
+}
+
 async function read_game(lang, game_mode) {
     /*
         Recebe linguagem do jogo e game mode e retorna os dados do JSON

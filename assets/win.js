@@ -6,12 +6,23 @@ function win_routine(){
     let seconds = Math.abs(start_time.getTime() - end_time.getTime())/1000;
 
     //cookies
+    var wins;
     var win_streak;
     var best_streak;
     var played;
     var time;
     var best_time;
     finished = true;
+
+    if (api.get(`${getGameLang()}_wins`)) {
+        wins = parseInt(api.get(`${getGameLang()}_wins`))+1;
+        api.set(`${getGameLang()}_wins`, parseInt(api.get(`${getGameLang()}_wins`))+1);
+    }
+    else {
+        wins = 1;
+        api.set(`${getGameLang()}_wins`, 1);
+    }
+
     if (api.get(`${getGameLang()}_win_streak`)) {
         win_streak = parseInt(api.get(`${getGameLang()}_win_streak`))+1;
         api.set(`${getGameLang()}_win_streak`, parseInt(api.get(`${getGameLang()}_win_streak`))+1);
@@ -57,12 +68,14 @@ function win_routine(){
     api.set(`${getGameLang()}_finished`, true);
     api.set(`${getGameLang()}_last_played`, new Date());
 
+    let percent_winning = parseFloat(parseFloat(wins)/parseFloat(played))*100;
+
     //finish screen
     $('.streak').html(win_streak);
     $('.best_streak').html(best_streak);
-    $('.best_time').html(`${best_time}s`);
+    $('.best_time').html(`${percent_winning.toFixed(1)}%`);
     $('.played').html(played);
-    $('.playing_time').html(`${time.toFixed(1)}s`);
+    //$('.playing_time').html(`${time.toFixed(1)}s`);
 
     //showing statistics
     const statisticsModal = new bootstrap.Modal(document.getElementById('finish'))

@@ -106,17 +106,20 @@ $(document).ready(function() {
                 });
 
                 //populando tela de estatísticas
+                var wins = parseInt(api.get(`${getGameLang()}_wins`));
                 var win_streak = parseInt(api.get(`${getGameLang()}_win_streak`));
                 var best_streak = parseInt(api.get(`${getGameLang()}_best_streak`));
                 var played = parseInt(api.get(`${getGameLang()}_played`));
                 var time =  parseFloat(api.get(`${getGameLang()}_time`));
                 var best_time =  parseInt(api.get(`${getGameLang()}_best_time`));
 
+                let percent_winning = parseFloat(parseFloat(wins)/parseFloat(played))*100;
+
                 $('.streak').html(win_streak);
                 $('.best_streak').html(best_streak);
-                $('.best_time').html(`${best_time}s`);
+                $('.best_time').html(`${percent_winning.toFixed(1)}%`);
                 $('.played').html(played);
-                $('.playing_time').html(`${time.toFixed(1)}s`);
+                //$('.playing_time').html(`${time.toFixed(1)}s`);
 
                 //abrindo tela de estatísticas
                 const statisticsModal = new bootstrap.Modal(document.getElementById('finish'))
