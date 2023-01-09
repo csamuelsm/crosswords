@@ -1,19 +1,6 @@
 var biggest_x;
 var biggest_y;
 
-function getGameMode() {
-    if (window.location.href.indexOf('crossword-mini') >= 0) {
-        return 'crosswordmini';
-    } else {
-        return 'crosswordtradicional';
-    }
-}
-
-function getK() {
-    if (getGameMode() == 'crosswordmini') return 5;
-    else return 10;
-}
-
 async function read_game(lang, game_mode) {
     /*
         Recebe linguagem do jogo e game mode e retorna os dados do JSON

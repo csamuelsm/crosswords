@@ -76,63 +76,26 @@ function createTexts(lang) {
 }
 
 $(document).ready(function(){
-    if (!api.get("lang"))
-    {
-        // Cookies de linguagem não estão setados
-        if (/^en\b/.test(userLang)) {
-            $('.language-selector option[value="en"]').prop("selected", true)
-            api.set("lang", "en")
-            setGameLang("en")
-            createTexts("en")
-        } else if (/^pt\b/.test(userLang)) {
-            $('.language-selector option[value="pt"]').prop("selected", true)
-            api.set("lang", "pt")
-            setGameLang("pt")
-            createTexts("pt")
-        } else if (/^de\b/.test(userLang)) {
-            $('.language-selector option[value="de"]').prop("selected", true)
-            api.set("lang", "de")
-            setGameLang("de")
-            createTexts("de")
-        } else {
-            $('.language-selector option[value="en"]').prop("selected", true)
-            api.set("lang", "en")
-            setGameLang("en")
-            createTexts("en")
-        }
-    } else {
-        // Cookies de linguagem estão setados
-        let lang = api.get("lang")
-        if (lang == "en") {
-            $('.language-selector option[value="en"]').prop("selected", true)
-            createTexts("en")
-        } else if (lang == "pt") {
-            $('.language-selector option[value="pt"]').prop("selected", true)
-            createTexts("pt")
-        } else if (lang == "de") {
-            $('.language-selector option[value="de"]').prop("selected", true)
-            createTexts("de")
-        } else {
-            $('.language-selector option[value="en"]').prop("selected", true)
-            createTexts("en")
-        }
-    }
+
+    $(`.language-selector option[value="${getGameLang()}"]`).prop("selected", true)
+    setGameLang(getGameLang())
+    createTexts(getGameLang())
 
     // SELECTING LANGUAGEM FROM MODAL
     $('#configuracoes .yes-button').on('click', function() {
         // TODO: pegar linguagem selecionada, setar o cookie lang e reiniciar pagina
         let selected_lang = $('.language-selector').children("option:selected").val()
         if (selected_lang == "en") {
-            api.set("lang", "en")
+            //api.set("lang", "en")
             setGameLang("en")
         } else if (selected_lang == "pt") {
-            api.set("lang", "pt")
+            //api.set("lang", "pt")
             setGameLang("pt")
         } else if (selected_lang == "de") {
-            api.set("lang", "de")
+            //api.set("lang", "de")
             setGameLang("de")
         } else {
-            api.set("lang", "en")
+            //api.set("lang", "en")
             setGameLang("en")
         }
         location.reload()

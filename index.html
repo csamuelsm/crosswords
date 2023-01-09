@@ -19,7 +19,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        const api = Cookies.withAttributes({expires:365});
+        //const api = Cookies.withAttributes({expires:365});
+
+        function getGameMode() {
+            if (window.location.href.indexOf('crossword-mini') >= 0) {
+                return 'crosswordmini';
+            } else {
+                return 'crosswordtradicional';
+            }
+        }
+
+        function getK() {
+            if (getGameMode() == 'crosswordmini') return 5;
+            else return 10;
+        }
+
+        class LocalStorage {
+            set(name, value) {
+                return localStorage.setItem(`${getGameMode()}_${name}`, value)
+            }
+
+            get(name) {
+                return localStorage.getItem(`${getGameMode()}_${name}`)
+            }
+        }
+
+        const api = new LocalStorage();
     </script>
 
     <!--<script src="/js/ep-commons.js"></script>-->

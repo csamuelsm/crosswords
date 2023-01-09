@@ -8,6 +8,10 @@ html, body {
     flex-direction: column;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 .container {
     padding: 5px;
     display: flex;
