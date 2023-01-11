@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--<script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>-->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -41,7 +42,7 @@
         <div class="container main-cont header-cont text-center d-flex   justify-content-center align-items-center">
 
             <div class="header row col-md-8 col-12 d-flex align-items-center justify-content-center">
-                <div class="header-left col-3 d-flex flex-row justify-content-between align-items-center">
+                <div class="header-left col d-flex flex-row justify-content-between align-items-center">
                     <!--<div class="col-2 text-left">
                         <i class="fa-sharp fa-solid fa-arrow-left"></i>
                     </div>-->
@@ -50,12 +51,12 @@
                     </div>
                 </div>
 
-                <div class="logo col-6 text-center">
+                <div class="logo col text-center">
                     <!--<img class="senha-logo" src="assets/logo.png"/>-->
                     <h3 class="title_top">CROSSWORDS</h3>
                 </div>
 
-                <div class="col-3 header-right text-right d-flex flex-row justify-content-between align-items-center">
+                <div class="col header-right text-right d-flex flex-row justify-content-between align-items-center">
                     <div class="text-right">
                         <!--<i class="fa-sharp fa-solid fa-circle-question onboarding-show"></i>-->
                         <img src="assets/General-Icon-HowToPlay.png" alt="how-to-play" class="onboarding-show"/>
@@ -63,6 +64,10 @@
                     <div class="text-right">
                         <!--<i class="fa-sharp fa-solid fa-gear configuracoes-show"></i>-->
                         <img src="assets/General-Icon-Settings.png" alt="settings" class="configuracoes-show"/>
+                    </div>
+                    <div class="text-right">
+                        <!--<i class="fa-sharp fa-solid fa-gear configuracoes-show"></i>-->
+                        <i class="bi bi-bar-chart-fill estatisticas-show"></i>
                     </div>
                 </div>
             </div>
@@ -153,8 +158,8 @@
                 <!--<h5 class="modal-title" id="staticBackdropLabel">HOW TO PLAY</h5>-->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body px-4 row align-items-center justify-content-center">
-                <div class="container text-left row justify-content-center">
+            <div class="modal-body px-3 row align-items-center justify-content-center">
+                <div class="text-left row justify-content-center">
                     <h6><strong>EVERYDAY CROSSWORDS</strong></h6>
                     <p class="onboarding-text">Tradition is just timeless, just like this puzzle.</p>
                     <img src="assets/Crossword.svg" style="height: 150px;width:auto;" alt="logo"/>
@@ -180,8 +185,8 @@
                 <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body px-4 row align-items-center justify-content-center">
-                <div class="container text-left row justify-content-center">
+            <div class="modal-body px-3 row align-items-center justify-content-center">
+                <div class="text-left row justify-content-center">
 
                     <h6><strong>EVERYDAY CROSSWORDS</strong></h6>
                     <p class="onboarding-text">Hi, this is how I look!</p>
@@ -258,8 +263,8 @@
                     <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body px-4 row align-items-center justify-content-center">
-                    <div class="container text-left row justify-content-center">
+                <div class="modal-body px-3 row align-items-center justify-content-center">
+                    <div class="text-left row justify-content-center">
                         <h6><strong>EVERYDAY CROSSWORDS</strong></h6>
                         <p class="onboarding-text">And this is how you play. Read the clue inside the yellow box. I'll explain the arrows next.</p>
 
@@ -297,8 +302,8 @@
                 <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body px-4 row align-items-center justify-content-center">
-                <div class="container text-left row justify-content-center">
+            <div class="modal-body px-3 row align-items-center justify-content-center">
+                <div class="text-left row justify-content-center">
                     <h6><strong>EVERYDAY CROSSWORDS</strong></h6>
                     <p class="onboarding-text">The left and white arrows allow you to navigate through the clues and change the direction of the board.</p>
 
@@ -333,8 +338,8 @@
                 <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body p-5 row align-items-center justify-content-center">
-                <div class="container text-left row justify-content-center">
+            <div class="modal-body px-3 row align-items-center justify-content-center">
+                <div class="text-left row justify-content-center">
                     <h6><strong>EVERYDAY CROSSWORDS</strong></h6>
                     <p class="onboarding-text">Tapping once or twice on the tiles also changes the clue and the direction of the word.</p>
 
@@ -401,8 +406,8 @@
                 <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body p-5 row align-items-center justify-content-center">
-                <div class="container text-left row align-items-center justify-content-center">
+            <div class="modal-body px-3 row align-items-center justify-content-center">
+                <div class="text-left row align-items-center justify-content-center">
                     <h6><strong>EVERYDAY CROSSWORDS</strong></h6>
                     <p class="onboarding-text">Oh, this key on the keypad changes the direction of the word as well. So many options!</p>
                     <img class="change_dir_key_img" src="assets/buttons/change_dir.png" style="height: 75px;width:auto;" alt="change_dir_key"/>
@@ -429,8 +434,8 @@
                 <!--<h5 class="modal-title" id="staticBackdropLabel">Desistir?</h5>-->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body p-5 row align-items-center justify-content-center">
-                <div class="container text-left row align-items-center justify-content-center">
+            <div class="modal-body px-3 row align-items-center justify-content-center">
+                <div class="text-left row align-items-center justify-content-center">
                     <h6><strong>EVERYDAY CROSSWORDS</strong></h6>
                     <p class="onboarding-text">Finally, if you get stuck, we have boosters to un-stuck you. Good luck, champion!</p>
                     <img class="boosters_keys_img" src="assets/buttons/mini_en.png" style="height: 150px;width:auto;" alt="boosters_keys"/>

@@ -16,6 +16,11 @@ $(document).ready(function(){
         configuracoesModal.show()
     })
 
+    $('.estatisticas-show').on('click', function(){
+        const estatisticasModal = new bootstrap.Modal(document.getElementById('finish'))
+        estatisticasModal.show()
+    })
+
     $('.desistir-button').on('click', function(){
         //desistir
         finished = true;
