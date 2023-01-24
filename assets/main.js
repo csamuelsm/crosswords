@@ -64,6 +64,8 @@ $(document).ready(function() {
         $(element).attr('href', getInstallUrl())
     })
 
+    //start_stats();
+
     //crosswordmini
     //crosswordtradicional
     read_game(getGameLang(), getGameMode())

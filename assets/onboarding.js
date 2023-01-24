@@ -17,6 +17,23 @@ $(document).ready(function(){
     })
 
     $('.estatisticas-show').on('click', function(){
+        let f = api.get(`${getGameLang()}_finished`);
+        let last_played = new Date(api.get(`${getGameLang()}_last_played`))
+
+        now = new Date()
+
+        last_played.setHours(0, 0, 0, 0);
+        now.setHours(0, 0, 0, 0);
+
+        if (!(f && last_played.getTime() === now.getTime())) {
+            // remove o 'Jogo FInalizado'
+            $('.finished_title').addClass('hide')
+            $('.finished_text').addClass('hide')
+        } else {
+            $('.finished_title').removeClass('hide')
+            $('.finished_text').removeClass('hide')
+        }
+
         const estatisticasModal = new bootstrap.Modal(document.getElementById('finish'))
         estatisticasModal.show()
     })
@@ -80,6 +97,9 @@ $(document).ready(function(){
 
         api.set(`${getGameLang()}_finished`, true);
         api.set(`${getGameLang()}_last_played`, new Date());
+
+        //$('.finished_title').addClass('hide')
+        //$('.finished_text').addClass('hide')
 
         let percent_winning = parseFloat(parseFloat(wins)/parseFloat(played))*100;
 

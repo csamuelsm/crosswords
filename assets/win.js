@@ -1,3 +1,30 @@
+function start_stats() {
+    var wins;
+    var win_streak;
+    var best_streak;
+    var played;
+
+    console.log('start_stats')
+
+    if (api.get(`${getGameLang()}_wins`) && api.get(`${getGameLang()}_played`)) {
+        wins = parseInt(api.get(`${getGameLang()}_wins`))
+        played = parseInt(api.get(`${getGameLang()}_played`))
+        let percent_winning = parseFloat(parseFloat(wins)/parseFloat(played))*100;
+        $('.best_time').html(`${percent_winning.toFixed(1)}%`);
+        $('.played').html(played);
+    }
+
+    if (api.get(`${getGameLang()}_win_streak`)) {
+        win_streak = parseInt(api.get(`${getGameLang()}_win_streak`))
+        $('.streak').html(win_streak);
+    }
+
+    if (api.get(`${getGameLang()}_best_streak`)) {
+        best_streak = parseInt(api.get(`${getGameLang()}_best_streak`))
+        $('.best_streak').html(best_streak);
+    }
+}
+
 function win_routine(){
     $('#quit_button').addClass("hide");
     $('.ep_banner_div').removeClass("hide");
@@ -77,6 +104,9 @@ function win_routine(){
     $('.played').html(played);
     //$('.playing_time').html(`${time.toFixed(1)}s`);
 
+    if ($('.finished_title').hasClass('hide')) $('.finished_title').removeClass('hide')
+    if ($('.finished_text').hasClass('hide')) $('.finished_text').removeClass('hide')
+
     //showing statistics
     const statisticsModal = new bootstrap.Modal(document.getElementById('finish'))
     statisticsModal.show()
@@ -143,3 +173,7 @@ async function share() {
         toast.show();
     }
 }
+
+$(document).ready(function(){
+    start_stats();
+})
